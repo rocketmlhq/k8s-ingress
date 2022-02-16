@@ -5,14 +5,14 @@ metadata:
   namespace: kube-system
 data:
   mapUsers: |
-    - userarn: $1
-      username: $2
+    - userarn: value1
+      username: value2
       groups:
         - system:masters
   mapRoles: |
-    - rolearn: $3
+    - rolearn: value3
       groups:
         - system:masters
-    - rolearn: $4
+    - rolearn: value4
       groups:
         - system:masters
