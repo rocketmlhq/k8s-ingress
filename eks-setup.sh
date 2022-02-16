@@ -18,7 +18,5 @@ aws eks update-kubeconfig --region $1 --name $2 \
 && kubectl apply -f https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml \
 && kubectl annotate serviceaccount cluster-autoscaler -n kube-system eks.amazonaws.com/role-arn=$3 \
 && kubectl patch deployment cluster-autoscaler -n kube-system -p '{"spec":{"template":{"metadata":{"annotations":{"cluster-autoscaler.kubernetes.io/safe-to-evict": "false"}}}}}' \
-#rm -rf k8s-ingress/ \
-#&& kubectl apply -f aws-auth-cm.yaml \
 && kubectl set image deployment cluster-autoscaler -n kube-system cluster-autoscaler=k8s.gcr.io/autoscaling/cluster-autoscaler:v1.21.0 \
 && kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
