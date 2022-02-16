@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapUsers: |
+    - userarn: $1
+      username: $2
+      groups:
+        - system:masters
+  mapRoles: |
+    - rolearn: $3
+      groups:
+        - system:masters
+    - rolearn: $4
+      groups:
+        - system:masters
