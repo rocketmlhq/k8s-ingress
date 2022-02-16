@@ -5,14 +5,14 @@ metadata:
   namespace: kube-system
 data:
   mapUsers: |
-    - userarn: value1
-      username: value2
+    - userarn: arn:aws:iam::484110161423:user/aarete-iam-user
+      username: aarete-iam-user
       groups:
         - system:masters
   mapRoles: |
-    - rolearn: value3
+    - rolearn: arn:aws:iam::484110161423:role/aarete-test-iam-LimitedAccessRoleForRmlApplication-LBNV3M931NLT
       groups:
         - system:masters
-    - rolearn: value4
+    - rolearn: arn:aws:iam::484110161423:role/Aarete-EKS-Test-NodeInstanceRole-1AQQ1KZRVWF9G
       groups:
         - system:masters
