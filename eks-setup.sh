@@ -28,4 +28,8 @@ sed -i 's/value4/$7/' k8s-ingress/aws-auth-cm.yaml
 
 kubectl apply -f k8s-ingress/aws-auth-cm.yaml
 
+sed -i 's/ClusterNameValue/$2/' k8s-ingress/cluster-autoscaler.yaml
+
+kubectl apply -f k8s-ingress/cluster-autoscaler.yaml
+
 rm -rf k8s-ingress/
