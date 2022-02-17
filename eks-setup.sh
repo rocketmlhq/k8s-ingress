@@ -34,6 +34,7 @@ kubectl apply -f k8s-ingress/aws-auth-cm.yaml \
 && kubectl annotate serviceaccount cluster-autoscaler -n kube-system eks.amazonaws.com/role-arn=$VALUE_2 \
 && kubectl patch deployment cluster-autoscaler -n kube-system -p '{"spec":{"template":{"metadata":{"annotations":{"cluster-autoscaler.kubernetes.io/safe-to-evict": "false"}}}}}' \
 && kubectl set image deployment cluster-autoscaler -n kube-system cluster-autoscaler=k8s.gcr.io/autoscaling/cluster-autoscaler:v1.21.0 \
-&& kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+&& kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml \
+&& kubectl apply -f k8s-ingress/cluster-autoscaler.yaml
 
 rm -rf k8s-ingress/
