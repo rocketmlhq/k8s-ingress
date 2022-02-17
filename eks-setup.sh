@@ -21,14 +21,14 @@ aws eks update-kubeconfig --region $AWS_REGION --name $1 \
 && kubectl set image deployment cluster-autoscaler -n kube-system cluster-autoscaler=k8s.gcr.io/autoscaling/cluster-autoscaler:v1.21.0 \
 && kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 
-sed -i 's/value1/$3/' k8s-ingress/aws-auth-cm.yaml
-sed -i 's/value2/$4/' k8s-ingress/aws-auth-cm.yaml
-sed -i 's/value3/$5/' k8s-ingress/aws-auth-cm.yaml
-sed -i 's/value4/$6/' k8s-ingress/aws-auth-cm.yaml
+sed -i "s/value1/$3/" k8s-ingress/aws-auth-cm.yaml
+sed -i "s/value2/$4/" k8s-ingress/aws-auth-cm.yaml
+sed -i "s/value3/$5/" k8s-ingress/aws-auth-cm.yaml
+sed -i "s/value4/$6/" k8s-ingress/aws-auth-cm.yaml
 
 kubectl apply -f k8s-ingress/aws-auth-cm.yaml
 
-sed -i 's/ClusterNameValue/$1/' k8s-ingress/cluster-autoscaler.yaml
+sed -i "s/ClusterNameValue/$1/" k8s-ingress/cluster-autoscaler.yaml
 
 kubectl apply -f k8s-ingress/cluster-autoscaler.yaml
 
