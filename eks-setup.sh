@@ -1,10 +1,10 @@
 #!/bin/bash
 
 VALUE_1=$(printf '%s\n' "$1" | sed -e 's/[\/&]/\\&/g')
-VALUE_2=$(printf '%s\n' "$3" | sed -e 's/[\/&]/\\&/g')
-VALUE_3=$(printf '%s\n' "$4" | sed -e 's/[\/&]/\\&/g')
-VALUE_4=$(printf '%s\n' "$5" | sed -e 's/[\/&]/\\&/g')
-VALUE_5=$(printf '%s\n' "$6" | sed -e 's/[\/&]/\\&/g')
+VALUE_2=$(printf '%s\n' "$2" | sed -e 's/[\/&]/\\&/g')
+VALUE_3=$(printf '%s\n' "$3" | sed -e 's/[\/&]/\\&/g')
+VALUE_4=$(printf '%s\n' "$4" | sed -e 's/[\/&]/\\&/g')
+VALUE_5=$(printf '%s\n' "$5" | sed -e 's/[\/&]/\\&/g')
 
 curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/kubectl \
 && chmod +x ./kubectl \
