@@ -1,10 +1,10 @@
 #!/bin/bash
 
 VALUE_1=$(printf '%s\n' "$1" | sed -e 's/[\/&]/\\&/g')
-VALUE_3=$(printf '%s\n' "$3" | sed -e 's/[\/&]/\\&/g')
-VALUE_4=$(printf '%s\n' "$4" | sed -e 's/[\/&]/\\&/g')
-VALUE_5=$(printf '%s\n' "$5" | sed -e 's/[\/&]/\\&/g')
-VALUE_6=$(printf '%s\n' "$6" | sed -e 's/[\/&]/\\&/g')
+VALUE_2=$(printf '%s\n' "$3" | sed -e 's/[\/&]/\\&/g')
+VALUE_3=$(printf '%s\n' "$4" | sed -e 's/[\/&]/\\&/g')
+VALUE_4=$(printf '%s\n' "$5" | sed -e 's/[\/&]/\\&/g')
+VALUE_5=$(printf '%s\n' "$6" | sed -e 's/[\/&]/\\&/g')
 
 curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/kubectl \
 && chmod +x ./kubectl \
@@ -15,10 +15,10 @@ aws eks update-kubeconfig --region $AWS_REGION --name $VALUE_1 \
 && git clone https://github.com/mayankkthr/k8s-ingress.git
 
 sed -i "s/ClusterNameValue/$VALUE_1/" k8s-ingress/cluster-autoscaler.yaml
-sed -i "s/value1/$VALUE_3/" k8s-ingress/aws-auth-cm.yaml
-sed -i "s/value2/$VALUE_4/" k8s-ingress/aws-auth-cm.yaml
-sed -i "s/value3/$VALUE_5/" k8s-ingress/aws-auth-cm.yaml
-sed -i "s/value4/$VALUE_6/" k8s-ingress/aws-auth-cm.yaml
+sed -i "s/value1/$VALUE_2/" k8s-ingress/aws-auth-cm.yaml
+sed -i "s/value2/$VALUE_3/" k8s-ingress/aws-auth-cm.yaml
+sed -i "s/value3/$VALUE_4/" k8s-ingress/aws-auth-cm.yaml
+sed -i "s/value4/$VALUE_5/" k8s-ingress/aws-auth-cm.yaml
 
 kubectl apply -f k8s-ingress/aws-auth-cm.yaml \
 && kubectl apply -f k8s-ingress/ns-and-sa.yaml \
